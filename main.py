@@ -144,7 +144,7 @@ def handleEvents(spriteGroup, event, selected):
                     return
                 elif mouseCard.num == -1:
                     print(stack.type)
-                    if stack.rect.colliderect(mouseCard.rect):
+                    if stack.rect.colliderect(mouseCard.rect) and selected.sprites().__len__() != 0:
                         topCard = selected.sprites()[0]
                         if topCard.value == 12:
                             moveCards = []
@@ -261,6 +261,7 @@ def handleEvents(spriteGroup, event, selected):
                         tempStack = []
                         tempStack = [stack.cardStack[stack.length() - 1]] + stack.cardStack[:(stack.length() - 1)]
                         stack.cardStack = tempStack
+                    selected.empty()
                         # It's not switching if I've already played a card
             print("Should be switching")
         elif event.button == 2:
